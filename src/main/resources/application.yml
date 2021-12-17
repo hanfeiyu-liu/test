@@ -1,0 +1,46 @@
+#数据源
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/test
+      username: root
+      password: 123456
+
+  profiles:
+    active: pro #使用那个端口
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto  #id自增
+#  configuration: #日志
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: pro #给端口起名字
+      #端口
+server:
+  port: 80
+
+---
+spring:
+  config:
+    activate:
+      on-profile: def #给端口起名字
+      #端口
+server:
+  port: 81
+
+---
+spring:
+  config:
+    activate:
+      on-profile: feg #给端口起名字
+      #端口
+server:
+  port: 82
